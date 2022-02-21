@@ -1,0 +1,91 @@
+
+Step1:
+Download Docker Desktop
+https://docs.docker.com/desktop/windows/install/
+
+Step2:
+Control Panel --> Programs and Features -> Enable windows features on/off
+Select
+	Hyper-V
+	windows subsystem linux
+
+Follow the Steps and Restart
+
+Step3: Install WSL
+	WSL: windows subsystem linux
+	download and install wsl
+	https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+
+Step4: 
+	Install Downloaded Docker Desktop at Step1
+
+Step5:
+	Start Docker Desktop
+
+-- Check Docker Verison
+docker --version
+docker-compose --version 
+
+*Note:- Linux users install docker compose 
+https://docs.docker.com/compose/install/ 
+
+-- Create docker-compose.yml file
+version: '3.1'
+services:
+  mycassandra:
+    image: cassandra
+    container_name: mycassandra
+    ports:
+      - "9042:9042"
+
+
+-- Run Following command
+	docker-compose up -d
+
+	-d detach mode( runs in the backgroud)
+
+-- Check running containers
+	docker ps
+
+-- Start interactive terminal
+docker exec -it container_name/container_id bash 
+
+ex: -
+docker exec -it mycassandra bash 
+docker exec -it e74d59da9187  bash 
+
+-- Open Cassandra command prompt (run below command)
+cqlsh
+
+-- List keyspaces
+describe keyspaces;
+
+-- Create Keyspace
+
+CREATE KEYSPACE npcikeyspace WITH replication = {'class':'SimpleStrategy', 'replication_factor':3};
+
+-- Use Keyspace
+
+use keyspacename;
+
+-- Create table in cassandra
+CREATE TABLE Product(id int PRIMARY KEY, name text);
+
+-- List tables
+describe tables;
+----------------------------
+
+Create SpringBoot Project
+Add following packages
+	Spring boot Web
+	Spring data for cassandra
+	Lombok
+
+
+
+
+
+
+
+
+
