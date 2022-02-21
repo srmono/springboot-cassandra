@@ -1,0 +1,70 @@
+Presentation: PPT
+
+First Slide :
+project title and name (Introduce your self)
+
+Slide 2:
+Case Study: ?
+Bank Project (Customer Management)
+	Brief Description
+
+Slide 3:
+Tools And Technologies Slide
+
+Spring Boot
+MySQL
+JPA
+
+Outcome: 
+REST API : 
+
+
+Slide 4:
+Project Architecture
+
+Standards/Quality of code : 
+Proper Formatting 
+Lombok 
+Exception Handling
+
+Slide 5:
+
+DATAbase Architecture
+
+Tables and relationship
+
+
+Slide 6:
+Rest API Details 
+RMM model 
+
+Slide 7: Demo
+open the project 
+
+----------------------------------------
+
+Exception Handling
+Custom Exceptions
+Custom REST API Response Model
+
+
+//Transaction response model
+
+{
+ 	transaction_id: 1,
+	customer_id: 1
+	to_customer_id: 2,
+	time: timestamp,
+	transaction_amount: 500,
+	final_balance_from_customer: 2500,
+	updated_balance_to_customer: 1000
+}
+
+---------------------------------
+
+Limit the responses with Offset Query
+
+
+
+
+
