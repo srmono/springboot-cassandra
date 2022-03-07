@@ -29,6 +29,11 @@ docker-compose --version
 *Note:- Linux users install docker compose 
 https://docs.docker.com/compose/install/ 
 
+
+-------------------------------------------------------------
+Create Cassandra Docker Container
+
+
 -- Create docker-compose.yml file
 version: '3.1'
 services:
@@ -47,6 +52,8 @@ services:
 -- Check running containers
 	docker ps
 
+
+
 -- Start interactive terminal
 docker exec -it container_name/container_id bash 
 
@@ -54,11 +61,34 @@ ex: -
 docker exec -it mycassandra bash 
 docker exec -it e74d59da9187  bash 
 
+
+
 -- Open Cassandra command prompt (run below command)
 cqlsh
 
+Create Keyspace Ex:- 
+
 -- List keyspaces
 describe keyspaces;
+
+-- Misc Commands
+CREATE KEYSPACE <identifier> WITH PROPERTIES
+ALTER KEYSPACE <identifier> WITH PROPERTIES
+DROP KEYSPACE <identifier>
+
+create tables tablename(
+	column1 name datatype primarkey,	
+	column2 name dataype
+	primarykey(column1)
+)
+
+alter table tablename add new column datatype;
+alter table tablename drop columnname;
+drop tablename;
+
+create index <identifier> on <tablename>
+CREATE INDEX idx_title ON npciproj.tutorial (title) 
+
 
 -- Create Keyspace
 
@@ -73,6 +103,40 @@ CREATE TABLE Product(id int PRIMARY KEY, name text);
 
 -- List tables
 describe tables;
+
+
+**Create Keyspace for project
+create keyspace npciproj with replication={'class':'SimpleStrategy', 'replication_factor':1};
+
+use npciproj
+
+CREATE TABLE tutorial(
+   id timeuuid PRIMARY KEY,
+   title text,
+   description text,
+   published boolean
+);
+
+**** Note:
+Refer findByTitleContaining() method in project 
+
+The method executes SELECT * FROM tutorial WHERE tutorial LIKE '%title%'; 
+in Cassandra.
+
+So we need the to create a custom index that has options with mode: 
+	CONTAINS along with analyzer_class to make case_sensitive effective.
+
+Run the command:
+
+CREATE INDEX idx_title ON npciproj.tutorial (title) 
+
+
+
+
+
+
+
+
 ----------------------------
 
 Create SpringBoot Project
